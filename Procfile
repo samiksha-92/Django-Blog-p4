@@ -1,1 +1,1 @@
-web: gunicorn yogit.wsgi
+web: gunicorn Yogit.wsgi
