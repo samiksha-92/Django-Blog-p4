@@ -33,7 +33,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-samiksha92-djangoblogp4-6fbowaw7t85.ws-us114.gitpod.io',' https://yogit-p4-190802e47c99.herokuapp.com/','localhost']
+ALLOWED_HOSTS = ['8000-samiksha92-djangoblogp4-6fbowaw7t85.ws-us114.gitpod.io','yogit-p4-190802e47c99.herokuapp.com','localhost']
 
 
 # Application definition
