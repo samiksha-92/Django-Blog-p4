@@ -16,6 +16,18 @@ class PostDetailView(DetailView):
     template_name = 'post_detail.html'
     context_object_name = 'post'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        comments = post.comments.filter(approved=True).order_by("-created_on")
+        liked = False
+        if self.request.user.is_authenticated and post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        context['comments'] = comments
+        context['liked'] = liked
+        return context
+
+
 class CategoryPostsView(ListView):
     model = Post
     template_name = 'category_posts.html'  #  template name
