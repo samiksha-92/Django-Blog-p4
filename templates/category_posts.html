@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Posts in Category: {{ category_name }}</h1>
+
+<div class="post-list">
+    {% for post in post_list %}
+    <div class="post">
+        <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+        {% if post.featured_image %}
+        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="post-image">
+        {% endif %}
+        <p>{{ post.excerpt }}</p>
+        <!-- Add more details as needed -->
+    </div>
+    {% empty %}
+    <p>No posts found in this category.</p>
+    {% endfor %}
+</div>
+{% endblock %}

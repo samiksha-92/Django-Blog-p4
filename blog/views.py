@@ -24,3 +24,13 @@ class CategoryPostsView(ListView):
     def get_queryset(self):
         category_slug = self.kwargs['slug']
         return Post.objects.filter(category__slug=category_slug)
+
+
+class TagPostsView(ListView):
+    model = Post
+    template_name = 'tag_posts.html'  # Your template name
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        tag_slug = self.kwargs['slug']
+        return Post.objects.filter(tags__slug=tag_slug)        
