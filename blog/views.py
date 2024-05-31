@@ -3,6 +3,7 @@ from django.views import generic
 from .models import Post
 from django.views.generic import DetailView
 from django.views.generic import ListView
+from .forms import CommentForm
 # Create your views here.
 
 class PostList(generic.ListView):
@@ -20,10 +21,12 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
         comments = post.comments.filter(approved=True).order_by("-created_on")
+        comment_form = CommentForm()
         liked = False
         if self.request.user.is_authenticated and post.likes.filter(id=self.request.user.id).exists():
             liked = True
         context['comments'] = comments
+        context['comment_form'] = comment_form
         context['liked'] = liked
         return context
 
