@@ -40,7 +40,7 @@ class CategoryPostsView(ListView):
 
 class TagPostsView(ListView):
     model = Post
-    template_name = 'tag_posts.html'  # Your template name
+    template_name = 'tag_posts.html'  #  template name
     context_object_name = 'post_list'
 
     def get_queryset(self):
