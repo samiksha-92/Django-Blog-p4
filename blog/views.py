@@ -12,6 +12,11 @@ class PostList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 5
 
+from django.shortcuts import render, get_object_or_404
+from django.views.generic.detail import DetailView
+from .models import Post
+from .forms import CommentForm
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
@@ -28,7 +33,29 @@ class PostDetailView(DetailView):
         context['comments'] = comments
         context['comment_form'] = comment_form
         context['liked'] = liked
+        context['commented'] = False
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()  # Ensure 'self.object' is set
+        context = self.get_context_data(**kwargs)
+        
+        # Process the submitted comment form
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            # If the form is valid, create a new comment
+            new_comment = comment_form.save(commit=False)
+            new_comment.email = request.user.email
+            new_comment.name = request.user.username
+            new_comment.post = self.object
+            new_comment.save()
+            context['commented'] = True  # Indicates that a comment has been submitted
+        else:
+            context['comment_form'] = comment_form  # Form with errors
+            context['commented'] = False
+
+        return render(request, self.template_name, context)
+
 
 
 class CategoryPostsView(ListView):
