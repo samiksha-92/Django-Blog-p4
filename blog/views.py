@@ -1,9 +1,10 @@
-from django.shortcuts import render
-from django.views import generic
+from django.shortcuts import render,reverse,get_object_or_404
+from django.views import generic,View
 from .models import Post
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from .forms import CommentForm
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 class PostList(generic.ListView):
@@ -56,11 +57,25 @@ class PostDetailView(DetailView):
 
         return render(request, self.template_name, context)
 
+class PostLike(DetailView):
+    
+    model = Post
+    context_object_name = 'post'
+
+    def post(self,request,*args,**kwargs):
+        self.object = self.get_object() #Ensure 'self.object' is set
+        post = self.object
+        
+        if post.likes.filter(id = request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        return HttpResponseRedirect(reverse('post_detail', args= [post.slug]))
 
 
 class CategoryPostsView(ListView):
     model = Post
-    template_name = 'category_posts.html'  #  template name
+    template_name = 'category_posts.html'  #template name
     context_object_name = 'post_list'
 
     def get_queryset(self):
