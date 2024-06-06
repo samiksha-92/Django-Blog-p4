@@ -80,6 +80,17 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select all dismissible alert elements
+            var alerts = document.querySelectorAll('.alert-dismissible');
+            alerts.forEach(function (alert) {
+                setTimeout(function () {
+                    alert.classList.remove('show');
+                }, 3000);
+            });
+        });
+    </script>
 </body>
 
 </html>
