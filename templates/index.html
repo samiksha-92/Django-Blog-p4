@@ -47,7 +47,7 @@
                             <hr />
                             <p class="card-text text-muted h6">{{ post.created_on|date:"Y-m-d H:i" }} <i
                                     class="far fa-heart"></i> {{ post.number_of_likes }} | <i
-                                    class="far fa-comment"></i> {{ post.comments.count }}</p>
+                                    class="far fa-comment"></i> {{ post.number_of_comments }}</p>
                             <p class="card-text">
                                 <strong>Category:</strong> <a
                                     href="{% url 'category_posts' post.category.slug %}">{{ post.category.name }}</a><br>
