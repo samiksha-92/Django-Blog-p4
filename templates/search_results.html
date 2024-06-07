@@ -18,8 +18,8 @@
 
     {% if results %}
     <ul>
-        {% for post in results %}
-        <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+        {% for result in results %}
+        <li><a href="{% url 'post_detail' result.slug %}">{{ result.title }}</a></li>
         {% endfor %}
     </ul>
     {% else %}
