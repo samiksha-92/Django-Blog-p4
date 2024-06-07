@@ -90,4 +90,12 @@ class TagPostsView(ListView):
 
     def get_queryset(self):
         tag_slug = self.kwargs['slug']
-        return Post.objects.filter(tags__slug=tag_slug)        
+        return Post.objects.filter(tags__slug=tag_slug)   
+
+def search_results(request):
+    query = request.GET.get('query')
+    if query:
+        results = Post.objects.filter(title__icontains = query)
+    else:
+        results =[]    
+    return render(request, 'search_results.html',{'results': results, 'query':query,})    

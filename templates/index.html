@@ -4,22 +4,12 @@
 
 <div class="container-fluid">
     <div class="row">
-
-        <!-- Categories and Tags Sidebar Column -->
         <div class="col-lg-3 mb-4">
-            <h4 class="mt-4">Categories</h4>
-            <div class="list-group">
-                {% for category in category_list %}
-                <a href="{% url 'category_posts' category.slug %}" class="list-group-item">{{ category.name }}</a>
-                {% endfor %}
-            </div>
-
-            <h4 class="mt-4">Tags</h4>
-            <div class="list-group">
-                {% for tag in tag_list %}
-                <a href="{% url 'tag_posts' tag.slug %}" class="list-group-item">{{ tag.name }}</a>
-                {% endfor %}
-            </div>
+            <h4 class="mt-4">Search</h4>
+            <form action="{% url 'search_results' %}" method="get">
+                <input type="text" name="query" placeholder="Search..." class="form-control">
+                <button type="submit" class="btn btn-primary mt-2">Search</button>
+            </form>
         </div>
 
         <!-- Blog Entries Column -->
