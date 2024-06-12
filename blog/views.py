@@ -2,6 +2,7 @@ from django.shortcuts import render,reverse,get_object_or_404
 from django.views import generic,View
 from .models import Post
 from django.views.generic import DetailView
+from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
@@ -13,10 +14,8 @@ class PostList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 5
 
-from django.shortcuts import render, get_object_or_404
 from django.views.generic.detail import DetailView
-from .models import Post
-from .forms import CommentForm
+
 
 class PostDetailView(DetailView):
     model = Post
