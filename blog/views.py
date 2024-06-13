@@ -43,8 +43,17 @@ class PostDetailView(DetailView):
         if comment_form.is_valid():
             # If the form is valid, create a new comment
             new_comment = comment_form.save(commit=False)
-            new_comment.email = request.user.email
-            new_comment.name = request.user.username
+            # Check if user is authenticated before accessing email
+            if request.user.is_authenticated:
+                new_comment.email = request.user.email
+                new_comment.name = request.user.username
+            else:
+                # Handle case for anonymous user (if needed)
+                new_comment.email = 'anonymous@example.com'
+                new_comment.name = 'Anonymous'
+
+            #new_comment.email = request.user.email
+            #new_comment.name = request.user.username
             new_comment.post = self.object
             new_comment.save()
             context['commented'] = True  # Indicates that a comment has been submitted
@@ -82,7 +91,7 @@ class CategoryPostsView(ListView):
 
 class TagPostsView(ListView):
     model = Post
-    template_name = 'tag_posts.html'  #  template name
+    template_name = 'tag_posts.html'  
     context_object_name = 'post_list'
 
     def get_queryset(self):
