@@ -14,8 +14,6 @@ class PostList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 5
 
-from django.views.generic.detail import DetailView
-
 
 class PostDetailView(DetailView):
     model = Post
