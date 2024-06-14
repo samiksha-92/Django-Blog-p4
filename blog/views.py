@@ -6,6 +6,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 class PostList(generic.ListView):
@@ -14,7 +16,7 @@ class PostList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 5
 
-
+# @method_decorator(login_required, name='dispatch')
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
@@ -61,8 +63,11 @@ class PostDetailView(DetailView):
             context['comment_form'] = comment_form  # Form with errors
             context['commented'] = False
 
-        return render(request, self.template_name, context)
+        return self.render_to_response(context)
+        # return render(request, self.template_name, context)
 
+
+# @method_decorator(login_required, name='dispatch')
 class PostLike(DetailView):
     
     model = Post
