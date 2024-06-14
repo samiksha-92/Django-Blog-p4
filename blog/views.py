@@ -12,11 +12,11 @@ from django.contrib.auth.decorators import login_required
 
 class PostList(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status = 1).order_by('-published_on')
+    queryset = Post.objects.filter(status=1).order_by('-published_on')
     template_name = 'index.html'
     paginate_by = 5
 
-# @method_decorator(login_required, name='dispatch')
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
@@ -39,7 +39,6 @@ class PostDetailView(DetailView):
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()  # Ensure 'self.object' is set
         context = self.get_context_data(**kwargs)
-        
         # Process the submitted comment form
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -54,11 +53,9 @@ class PostDetailView(DetailView):
                 new_comment.email = 'anonymous@example.com'
                 new_comment.name = 'Anonymous'
 
-            #new_comment.email = request.user.email
-            #new_comment.name = request.user.username
             new_comment.post = self.object
             new_comment.save()
-            context['commented'] = True  # Indicates that a comment has been submitted
+            context['commented'] = True
         else:
             context['comment_form'] = comment_form  # Form with errors
             context['commented'] = False
@@ -69,24 +66,22 @@ class PostDetailView(DetailView):
 
 # @method_decorator(login_required, name='dispatch')
 class PostLike(DetailView):
-    
     model = Post
     context_object_name = 'post'
 
-    def post(self,request,*args,**kwargs):
-        self.object = self.get_object() #Ensure 'self.object' is set
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
         post = self.object
-        
-        if post.likes.filter(id = request.user.id).exists():
+        if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        return HttpResponseRedirect(reverse('post_detail', args= [post.slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
 
 
 class CategoryPostsView(ListView):
     model = Post
-    template_name = 'category_posts.html'  #template name
+    template_name = 'category_posts.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
@@ -96,17 +91,18 @@ class CategoryPostsView(ListView):
 
 class TagPostsView(ListView):
     model = Post
-    template_name = 'tag_posts.html'  
+    template_name = 'tag_posts.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
         tag_slug = self.kwargs['slug']
-        return Post.objects.filter(tags__slug=tag_slug)   
+        return Post.objects.filter(tags__slug=tag_slug)
+
 
 def search_results(request):
     query = request.GET.get('query')
     if query:
-        results = Post.objects.filter(title__icontains = query)
+        results = Post.objects.filter(title__icontains=query)
     else:
-        results =[]    
-    return render(request, 'search_results.html',{'results': results, 'query':query,})    
+        results = []
+    return render(request, 'search_results.html', {'results': results, 'query':query, })
