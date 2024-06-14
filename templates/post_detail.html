@@ -1,15 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
 {% load crispy_forms_tags %}
-<div class="masthead">
+<div class="masthead" style="background-color: #fdf6f0;">
     <div class="container">
         <div class="row g-0">
-            <div class="col-md-6 masthead-text">
+            <div class="col-md-6 masthead-text" style="background-color: #ffcccc;">
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title"> {{post.title}}
                 </h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"> {{post.author}}|{{ post.created_on|date:"Y-m-d" }} </p>
+                <p class="post-subtitle" style="background-color: #ffcccc;">
+                    {{post.author}}|{{ post.created_on|date:"Y-m-d" }} </p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
