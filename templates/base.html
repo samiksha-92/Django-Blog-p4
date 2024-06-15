@@ -25,9 +25,11 @@
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg" style="background-color: #d6e8d6;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">c<span class="red-o">o</span>de<span
-                        class="thin">|star</span></a>
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Yogit Logo" width="100" height="100"
+                    class="d-inline-block align-middle">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
