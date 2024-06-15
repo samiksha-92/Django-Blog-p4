@@ -9,12 +9,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div class="card mt-5" style="background-color: #f8f9fa; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+            <div class="card mt-5" style="background-color: #d6e8d6; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
                 <div class="card-body">
                     <h3 class="card-title text-center mb-4" style="color: #495057;">{% trans "Welcome Back!" %}</h3>
 
                     <p class="card-text text-center" style="color: #495057;">
-                        {% trans "Sign in to your account to continue" %}</p>
+                        {% trans "Sign in to continue your mindful coding journey" %}</p>
 
                     <form class="login" method="POST" action="{% url 'account_login' %}">
                         {% csrf_token %}
