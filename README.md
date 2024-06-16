@@ -220,3 +220,12 @@ The validation results confirm that the Python code of Yogit Blog complies with 
 
 <img src = "static/images/Python Linter results.png">
 
+## Deployment
+
+- Create a new Exteernal Database
+- Create the Heroku App
+- Attach the elephantsql database
+- Prepare the env.py ad settings.py file to reflect database changes
+
+
+
