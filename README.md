@@ -76,3 +76,128 @@ To get started with Yogit Blog, follow these simple steps:
 - **test_post_like_view_unlike:** Validates the functionality of unliking a post. It first likes the post by adding the user to the list of likes, then sends a POST request to unlike the post and verifies that the user is removed from the list of likes. It confirms that the response redirects back to the post detail view after unliking.
 
 These test cases cover essential functionalities of the Yogit Blog application, ensuring that features like post detail viewing, category and tag filtering, search functionality, and post liking operate correctly and reliably under different scenarios. Running these tests helps maintain the application's integrity and functionality across updates and modifications.
+
+## Manual Testing Cases
+
+### 1. User Registration and Authentication
+
+**Scenario:** User signs up for a new account and logs in.
+
+**Steps to Test:**
+1. Navigate to the registration page.
+2. Fill in the required fields (username, email, password).
+3. Submit the registration form.
+4. Check for a successful registration message or any error messages if registration fails.
+5. Log in using the registered credentials.
+6. Verify successful login and navigation to the home page or dashboard.
+
+**Expected Outcome:** 
+- Registration and login processes should complete without errors.
+- User should be able to access protected resources after logging in.
+
+### 2. Creating a New Blog Post
+
+**Scenario:** User creates a new blog post.
+
+**Steps to Test:**
+1. Log in to the application as a registered user.
+2. Navigate to the "Create New Post" section.
+3. Fill in the required fields (title, content, category, tags, etc.).
+4. Upload a featured image if required.
+5. Submit the post creation form.
+6. Verify that the new post appears in the list of recent posts on the homepage or in the relevant category/tag page.
+
+**Expected Outcome:**
+- The new post should be successfully created and displayed on relevant pages.
+- Post details such as title, content, category, and tags should be accurately displayed.
+
+### 3. Commenting on a Blog Post
+
+**Scenario:** User comments on an existing blog post.
+
+**Steps to Test:**
+1. Navigate to a specific blog post.
+2. Scroll down to the comment section.
+3. Fill in the required fields (name, email, comment body).
+4. Submit the comment form.
+5. Verify that the comment appears immediately under the post after moderation.
+
+
+
+**Expected Outcome:**
+- The comment should be successfully added to the post.
+- Comments should display the commenter's name, timestamp, and comment content.
+
+<img src = "static/images/Comment approval awat.png">
+
+<img src = "static/images/comment approved.png">
+### 4. Searching for Blog Posts
+
+**Scenario:** User searches for specific blog posts using keywords.
+
+**Steps to Test:**
+1. Navigate to the search bar or search page.
+2. Enter keywords related to blog post titles, content, or tags.
+3. Submit the search query.
+4. Check the search results page for relevant posts matching the keywords.
+
+**Expected Outcome:**
+- Posts containing the search keywords should be displayed in the search results.
+- Each search result should link to the corresponding blog post link with relevant details.
+<img src = "static/images/search.png">
+
+### 5. Liking and Unliking a Blog Post
+
+**Scenario:** User likes or unlikes a blog post.
+
+**Steps to Test:**
+1. Navigate to a specific blog post.
+2. Click on the "Like" button if available.
+3. Verify that the like count increases and the button changes to "Unlike".
+4. Click on the "Unlike" button to remove the like.
+5. Verify that the like count decreases and the button changes back to "Like".
+
+**Expected Outcome:**
+- Liking and unliking actions should update the post's like count accordingly.
+- User interface should reflect the current like status with appropriate button states.
+
+<img src = "static/images/postlike.png">
+<img src = "static/images/postunlike.png">
+
+### 6. Filtering Blog Posts by Category or Tag
+
+**Scenario:** User filters blog posts by selecting a category or tag.
+
+**Steps to Test:**
+1. Navigate to the category or tag section on the homepage or navigation bar.
+2. Click on a specific category or tag link.
+3. Verify that only blog posts associated with the selected category or tag are displayed.
+4. Check the URL for the category or tag slug to ensure correct filtering.
+
+**Expected Outcome:**
+- Blog posts should be filtered based on the selected category or tag.
+- Navigation and filtering should be intuitive and reflect the chosen category or tag.
+
+<img src = "static/images/postcategory.png">
+<img src = "static/images/posttag.png">
+
+### 7. Responsive Design Testing
+
+**Scenario:** User accesses the application using different devices or screen sizes.
+
+**Steps to Test:**
+1. Open the application on a desktop browser.
+2. Resize the browser window to simulate tablet or mobile device sizes.
+3. Navigate through various pages including home, blog post detail, category/tag pages, and search results.
+4. Check for responsive design behavior such as menu collapses, image scaling, and content rearrangement. Images will not be displated for individual posts after a certain breakpoint.
+5. Use browser developer tools to simulate specific device sizes and orientations if needed.
+
+**Expected Outcome:**
+- Application should adapt responsively to different screen sizes without loss of functionality or readability.
+- Content should remain accessible and navigable across all tested devices.
+
+<img src = "static/images/screentest1.png">
+<img src = "static/images/screentest2.png">
+<img src = "static/images/screentest3-desktop.png">
+
+These manual testing cases cover key user interactions and scenarios within the Yogit Blog application, ensuring usability, functionality, and performance under various conditions. They complement automated test cases by validating real-world usage and user interface behavior.
