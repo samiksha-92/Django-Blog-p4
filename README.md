@@ -32,3 +32,47 @@ To get started with Yogit Blog, follow these simple steps:
 5. **Start the development server**: `python manage.py runserver`
 6. **Visit the blog**: Open your browser and go to `http://127.0.0.1:8000`
 
+## Test Cases Overview - Automated & Manual
+
+### Post Comment View Test Cases
+
+**Conclusion:** This test case verifies the functionality related to commenting on a post.
+
+**Explanation:** 
+- **test_post_detail_view:** Checks if the post detail view renders correctly and if approved comments are displayed in the context. It also verifies that the comment form and other context variables are present and correctly initialized.
+  
+- **test_post_detail_view_post_method:** Tests the behavior when a user posts a new comment. It ensures that the comment is successfully added to the database and that the 'commented' flag in the context is set to True after the comment is posted and approved.
+
+### Category Posts View Test Case
+
+**Conclusion:** This test case validates the category-specific post listing functionality.
+
+**Explanation:**
+- **test_category_posts_view:** Ensures that the category posts view renders the correct template and retrieves the appropriate posts associated with a specific category. It checks if the posts are present in the context and verifies the count of retrieved posts.
+
+### Tag Posts View Test Case
+
+**Conclusion:** This test case verifies the tag-specific post listing functionality.
+
+**Explanation:**
+- **test_tag_posts_view:** Checks if the tag posts view renders the correct template and retrieves the correct posts associated with a specific tag. It verifies that the retrieved posts are present in the context and confirms the count of retrieved posts.
+
+### Search Results View Test Case
+
+**Conclusion:** This test case validates the search functionality and its results.
+
+**Explanation:**
+- **test_search_results_view_with_results:** Tests the search results view when there are matching results for a query. It verifies that the correct template is rendered, the search query is passed to the context, and the expected post is present in the results.
+
+- **test_search_results_view_without_results:** Validates the search results view when there are no matching results for a query. It checks that the correct template is rendered, the search query is passed to the context, and the results list is empty.
+
+### Post Like View Test Case
+
+**Conclusion:** This test case verifies the functionality related to liking and unliking posts.
+
+**Explanation:**
+- **test_post_like_view_like:** Tests the functionality of liking a post. It sends a POST request to like a post and verifies that the user is added to the list of likes for that post. It also checks that the response redirects back to the post detail view after liking.
+
+- **test_post_like_view_unlike:** Validates the functionality of unliking a post. It first likes the post by adding the user to the list of likes, then sends a POST request to unlike the post and verifies that the user is removed from the list of likes. It confirms that the response redirects back to the post detail view after unliking.
+
+These test cases cover essential functionalities of the Yogit Blog application, ensuring that features like post detail viewing, category and tag filtering, search functionality, and post liking operate correctly and reliably under different scenarios. Running these tests helps maintain the application's integrity and functionality across updates and modifications.
