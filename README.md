@@ -1,4 +1,4 @@
-# Yogit Blog: Balancing Bytes with Breath
+# Yogit Blog: Balancing Bytes with Breath(https://yogit-p4-190802e47c99.herokuapp.com/)
 
 Welcome to **Yogit Blog**, where we harmoniously blend the worlds of coding and yoga. Our mission is to provide developers with insightful tips on integrating yoga practices into their daily routines, promoting a balanced lifestyle that enhances both mental agility and physical wellness.
 
@@ -224,8 +224,10 @@ The validation results confirm that the Python code of Yogit Blog complies with 
 
 - Create a new Exteernal Database
 - Create the Heroku App
-- Attach the elephantsql database
+- Attach the elephantsql database, port 8000 and other config vars to Heroku
 - Prepare the env.py ad settings.py file to reflect database changes
+- Enable manual deployment branch
+- Click on deploy
 
 
 
