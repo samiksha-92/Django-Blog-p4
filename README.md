@@ -85,7 +85,7 @@ These test cases cover essential functionalities of the Yogit Blog application, 
 
 **Steps to Test:**
 1. Navigate to the registration page.
-2. Fill in the required fields (username, email, password).
+2. Fill in the required fields (username, email, password). Please email is not a nmandatory field here.
 3. Submit the registration form.
 4. Check for a successful registration message or any error messages if registration fails.
 5. Log in using the registered credentials.
@@ -95,21 +95,9 @@ These test cases cover essential functionalities of the Yogit Blog application, 
 - Registration and login processes should complete without errors.
 - User should be able to access protected resources after logging in.
 
-### 2. Creating a New Blog Post
+<img src = "static/images/signup.png">
+<img src = "static/images/login.png">
 
-**Scenario:** User creates a new blog post.
-
-**Steps to Test:**
-1. Log in to the application as a registered user.
-2. Navigate to the "Create New Post" section.
-3. Fill in the required fields (title, content, category, tags, etc.).
-4. Upload a featured image if required.
-5. Submit the post creation form.
-6. Verify that the new post appears in the list of recent posts on the homepage or in the relevant category/tag page.
-
-**Expected Outcome:**
-- The new post should be successfully created and displayed on relevant pages.
-- Post details such as title, content, category, and tags should be accurately displayed.
 
 ### 3. Commenting on a Blog Post
 
@@ -201,3 +189,4 @@ These test cases cover essential functionalities of the Yogit Blog application, 
 <img src = "static/images/screentest3-desktop.png">
 
 These manual testing cases cover key user interactions and scenarios within the Yogit Blog application, ensuring usability, functionality, and performance under various conditions. They complement automated test cases by validating real-world usage and user interface behavior.
+
