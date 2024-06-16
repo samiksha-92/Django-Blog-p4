@@ -36,7 +36,21 @@ body {
 
 .image-container {
     position: relative;
+    width: 100%;
+    height: auto;
 }
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 
 .image-flash {
     position: absolute;
@@ -67,6 +81,11 @@ body {
     position: relative;
 }
 
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
 .masthead-image {
     position: relative;
     overflow: hidden;
@@ -79,12 +98,14 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #007afd;
+    background: #ffffff;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
 }
+
+
 
 .post-link {
     text-decoration: none;
