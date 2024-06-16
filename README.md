@@ -190,3 +190,33 @@ These test cases cover essential functionalities of the Yogit Blog application, 
 
 These manual testing cases cover key user interactions and scenarios within the Yogit Blog application, ensuring usability, functionality, and performance under various conditions. They complement automated test cases by validating real-world usage and user interface behavior.
 
+## HTML Code Validation Results
+
+### Introduction
+The Yogit Blog application's HTML code has been validated to ensure compliance with HTML standards. Validation helps ensure that the markup is correctly structured, semantically meaningful, and free of syntax errors that could impact rendering or accessibility.
+
+### Validation Tools Used
+The following online tools were utilized to validate the HTML code of Yogit Blog:
+
+- [W3C Markup Validation Service](https://validator.w3.org/): A validator provided by the World Wide Web Consortium (W3C) that checks the syntax of HTML and XHTML documents.
+
+### Validation Results
+The validation results confirm that the HTML code of Yogit Blog complies with the recommended standards and best practices. Here are the key findings:
+
+### Conclusion (https://validator.w3.org/nu/?doc=https%3A%2F%2F8000-samiksha92-djangoblogp4-6fbowaw7t85.ws-us114.gitpod.io%2F)
+The successful validation of Yogit Blog's HTML code ensures:
+- Compatibility across different web browsers and devices.
+- Improved accessibility and usability for all users, including those with disabilities.
+- Adherence to industry standards for web development, enhancing overall code quality and maintainability.
+
+## Python Code Validation Results
+ 
+ - [Python Linter by CI] (https://pep8ci.herokuapp.com/)
+
+### Validation Results
+The validation results confirm that the Python code of Yogit Blog complies with the recommended standards and best practices. Here are the key findings:  
+
+### Conclusion : 
+
+<img src = "static/images/Python Linter results.png">
+
