@@ -81,6 +81,26 @@ class PostLike(DetailView):
         return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
 
 
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = "post_form.html"
+    success_url = reverse_lazy('index')
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = "post_form.html"
+    success_url = reverse_lazy('index')
+
+class PostDeleteView(DeleteView):
+    model = Post 
+    template_name = "post_confirm_delete.html"
+    success_url = reverse_lazy('index')
+
+
+
 class CategoryPostsView(ListView):
     model = Post
     template_name = 'category_posts.html'
