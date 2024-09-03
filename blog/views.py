@@ -1,10 +1,11 @@
 from django.shortcuts import render, reverse, get_object_or_404
+from django.urls import reverse_lazy
 from django.views import generic, View
-from .models import Post
-from django.views.generic import DetailView
+from .models import Post,Category,Tag
+from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
-from .forms import CommentForm
+from .forms import CommentForm,PostForm
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
