@@ -65,6 +65,27 @@ class PostDetailView(DetailView):
         return self.render_to_response(context)
         # return render(request, self.template_name, context)
 
+class CommentUpdateView(UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'comment_form.html'
+    success_url = reverse_lazy('post_detail')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(name=self.request.user.username)
+
+class CommentDeleteView(DeleteView):
+    model = Comment
+    template_name = 'comment_confirm_delete.html'
+    success_url = reverse_lazy('post_detail')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(name=self.request.user.username)
+
+
+
 
 # @method_decorator(login_required, name='dispatch')
 class PostLike(DetailView):
