@@ -44,6 +44,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}" style="color: #005c5c;">Logout</a>
                     </li>
+                    {% if user.is_superuser %}
+                        <!-- Admin-specific CRUD links -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #005c5c;">
+                                Admin Panel
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                <li><a class="dropdown-item" href="{% url 'post_create' %}">Create Post</a></li>
+                                <li><a class="dropdown-item" href="{% url 'home' %}">Manage Posts</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category_create' %}">Create Category</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category_list' %}">Manage Categories</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tag_create' %}">Create Tag</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tag_list' %}">Manage Tags</a></li>
+                                <li><a class="dropdown-item" href="{% url 'comment_list' %}">Manage Comments</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}" style="color: #005c5c;">Register</a>
@@ -51,6 +68,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}" style="color: #005c5c;">Login</a>
                     </li>
+                    
                     {% endif %}
                 </ul>
 

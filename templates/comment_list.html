@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Comments</h2>
+<a href="{% url 'comment_create' %}" class="btn btn-success mb-3">Add New Comment</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Content</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comment in comments %}
+        <tr>
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.name }}</td>
+            <td>
+                <a href="{% url 'comment_edit' comment.pk %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'comment_delete' comment.pk %}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No comments found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

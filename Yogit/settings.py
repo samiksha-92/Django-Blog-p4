@@ -33,11 +33,11 @@ if not SECRET_KEY:
     raise ValueError("The SECRET_KEY environment variable is not set or empty")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-ALLOWED_HOSTS = ['8000-samiksha92-djangoblogp4-6fbowaw7t85.ws-us114.gitpod.io','yogit-p4-190802e47c99.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['8000-samiksha92-djangoblogp4-6fbowaw7t85.ws-us114.gitpod.io','yogit-p4-190802e47c99.herokuapp.com','8000-samiksha92-djangoblogp4-g91hc5nk1cb.ws.codeinstitute-ide.net','localhost']
 
 
 # Application definition
@@ -75,6 +75,13 @@ MESSAGE_TAGS = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-samiksha92-djangoblogp4-g91hc5nk1cb.ws.codeinstitute-ide.net',
+]
+
 
 
 MIDDLEWARE = [

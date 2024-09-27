@@ -10,4 +10,16 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'slug', 'author', 'category', 'tags', 'text', 'featured_image', 'status',]        
+        fields = ['title', 'slug', 'author', 'category', 'tags', 'text', 'featured_image', 'status',]     
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name', 'slug']          
+
+
+class TagForm (forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ['name', 'slug']

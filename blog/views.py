@@ -1,11 +1,11 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic, View
-from .models import Post,Category,Tag
+from .models import Post,Category,Tag,Comment
 from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
-from .forms import CommentForm,PostForm
+from .forms import CommentForm,PostForm,CategoryForm,TagForm
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -106,7 +106,7 @@ class PostCreateView(CreateView):
     model = Post
     form_class = PostForm
     template_name = "post_form.html"
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('home')
 
 
 class PostUpdateView(UpdateView):
@@ -129,7 +129,63 @@ class CategoryPostsView(ListView):
 
     def get_queryset(self):
         category_slug = self.kwargs['slug']
+        self.category = get_object_or_404(Category, slug=category_slug)
         return Post.objects.filter(category__slug=category_slug)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_name'] = self.category.name
+        return context
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category_form.html'
+    success_url = reverse_lazy('home')
+
+class CategoryUpdateView(UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category_form.html'
+    success_url = reverse_lazy('home')
+
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'category_confirm_delete.html'
+    success_url = reverse_lazy('category_list')
+
+
+
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'category_list.html')
+
+
+
+class TagCreateView(CreateView):
+    model = Tag
+    form_class = TagForm
+    template_name = 'tag_form.html'
+    success_url = reverse_lazy('home')
+
+class TagUpdateView(UpdateView):
+    model = Tag
+    form_class = TagForm
+    template_name = 'tag_form.html'  
+    success_url = reverse_lazy('tag_list')
+
+class TagDeleteView(DeleteView):
+    model = Tag
+    template_name = 'tag_confirm_delete.html'  
+    success_url = reverse_lazy('tag_list')
+
+
+class TagListView(ListView):
+    model = Tag
+    template_name = 'tag_list.html'  
+    context_object_name = 'tags'
 
 
 class TagPostsView(ListView):
@@ -142,6 +198,8 @@ class TagPostsView(ListView):
         return Post.objects.filter(tags__slug=tag_slug)
 
 
+
+
 def search_results(request):
     query = request.GET.get('query')
     if query:
@@ -149,3 +207,9 @@ def search_results(request):
     else:
         results = []
     return render(request, 'search_results.html', {'results': results, 'query':query, })
+
+
+class CommentListView(ListView):
+    model = Comment
+    template_name = 'comment_list.html'  
+    context_object_name = 'comments'    
