@@ -5,7 +5,7 @@ from .views import CategoryPostsView
 from .views import TagCreateView
 from . views import PostLike
 from .views import PostCreateView, PostUpdateView,PostDeleteView
-from .views import CategoryCreateView, CategoryUpdateView,CategoryDeleteView,TagListView,TagCreateView,TagDeleteView,TagUpdateView,TagDeleteView,TagPostsView
+from .views import CategoryCreateView, CategoryUpdateView,CategoryDeleteView,CategoryListView,TagListView,TagCreateView,TagDeleteView,TagUpdateView,TagDeleteView,TagPostsView
 from .views import CommentListView
 
 
@@ -16,11 +16,11 @@ path('post/new/', PostCreateView.as_view(), name='post_create'),
 path('post/<int:pk>/edit/', PostUpdateView.as_view(), name='post_edit'),
 path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
 path('post/<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
-path('category/<slug:slug>/', CategoryPostsView.as_view(), name='category_posts'),
 path('category/new/', CategoryCreateView.as_view(), name='category_create'),
+path('category/<slug:slug>/', CategoryPostsView.as_view(), name='category_posts'),
 path('category/<slug:slug>/edit/', CategoryUpdateView.as_view(), name='category_edit'),
 path('category/<slug:slug>/delete/', CategoryDeleteView.as_view(), name='category_delete'),  
-path('categories/', views.category_list, name='category_list'),
+path('categories/', CategoryListView.as_view(), name='category_list'),
 path('tag/create/', TagCreateView.as_view(), name='tag_create'),
 path('tag/<slug:slug>/', TagPostsView.as_view(), name='tag_posts'),
 path('tags/', TagListView.as_view(), name='tag_list'),  # List tags

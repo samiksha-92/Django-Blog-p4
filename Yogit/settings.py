@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_summernote',
     'crispy_forms',
+    'crispy_bootstrap5',
     'blog',
 ]
 
@@ -74,7 +75,7 @@ MESSAGE_TAGS = {
     messages.ERROR : 'alert-danger',
 }
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 
 

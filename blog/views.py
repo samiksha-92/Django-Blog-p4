@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic, View
 from .models import Post,Category,Tag,Comment
-from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
+from django.views.generic import DetailView,CreateView,UpdateView,DeleteView,ListView
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from .forms import CommentForm,PostForm,CategoryForm,TagForm
@@ -113,12 +113,12 @@ class PostUpdateView(UpdateView):
     model = Post
     form_class = PostForm
     template_name = "post_form.html"
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('home')
 
 class PostDeleteView(DeleteView):
     model = Post 
     template_name = "post_confirm_delete.html"
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('home')
 
 
 
@@ -142,7 +142,7 @@ class CategoryCreateView(CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category_form.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('category_list')
 
 class CategoryUpdateView(UpdateView):
     model = Category
@@ -158,9 +158,14 @@ class CategoryDeleteView(DeleteView):
 
 
 
-def category_list(request):
-    categories = Category.objects.all()
-    return render(request, 'category_list.html')
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'categories'  # Make sure the template is using this name
+
+    def get_queryset(self):
+        return Category.objects.all()  # Fetch all categories
+
 
 
 
